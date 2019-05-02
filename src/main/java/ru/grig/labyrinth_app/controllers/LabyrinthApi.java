@@ -23,7 +23,7 @@ public class LabyrinthApi {
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody Labyrinth labyrinth) {
         try {
-            return ResponseEntity.ok(labyrinthService.createLabyrinth(labyrinth));
+            return ResponseEntity.ok(labyrinthService.create(labyrinth));
         } catch (Exception ex) {
             return ResponseEntity.badRequest().body(new StatusMessage(StatusEnum.ERROR, ex.getMessage()));
         }

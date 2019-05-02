@@ -22,7 +22,7 @@ public class RobotApi {
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody Robot robot) {
         try {
-            return ResponseEntity.ok(robotService.createRobot(robot));
+            return ResponseEntity.ok(robotService.create(robot));
         } catch (Exception ex) {
             return ResponseEntity.badRequest().body(new StatusMessage(StatusEnum.ERROR, ex.getMessage()));
         }
@@ -58,7 +58,7 @@ public class RobotApi {
     @PostMapping("/delete")
     public ResponseEntity<?> delete(@RequestBody Robot robot) {
         try {
-            robotService.deleteRobot(robot);
+            robotService.delete(robot);
             return ResponseEntity.ok(new StatusMessage(StatusEnum.SUCCESS, "Robot removed"));
         } catch (Exception ex) {
             return ResponseEntity.badRequest().body(

@@ -19,7 +19,7 @@ public class LabyrinthService {
         this.labyrinthRepository = labyrinthRepository;
     }
 
-    public Labyrinth createLabyrinth(Labyrinth labyrinth) {
+    public Labyrinth create(Labyrinth labyrinth) {
         return labyrinthRepository.save(labyrinth);
     }
 

@@ -19,7 +19,7 @@ public class RobotService {
     }
 
 
-    public Robot createRobot(Robot robot) {
+    public Robot create(Robot robot) {
         return robotRepository.save(robot);
     }
 
@@ -32,7 +32,7 @@ public class RobotService {
         return robotOptional.orElseThrow(() -> new Exception("Robot don't exist"));
     }
 
-    public void deleteRobot(Robot robot) {
+    public void delete(Robot robot) {
         robotRepository.delete(robot);
     }
 
