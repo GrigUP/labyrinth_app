@@ -1,9 +1,12 @@
 package ru.grig.labyrinth_app.domain.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -29,6 +32,7 @@ public class Labyrinth extends AbstractEntity {
     private String map;
 
     @OneToMany(mappedBy = "labyrinth")
+    @JsonIgnore
     private Set<Robot> robot;
 
     public Labyrinth() {
@@ -89,5 +93,33 @@ public class Labyrinth extends AbstractEntity {
 
     public void setMap(String map) {
         this.map = map;
+    }
+
+    public Set<Robot> getRobot() {
+        return robot;
+    }
+
+    public void setRobot(Set<Robot> robot) {
+        this.robot = robot;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Labyrinth)) return false;
+        if (!super.equals(o)) return false;
+        Labyrinth labyrinth = (Labyrinth) o;
+        return Objects.equals(name, labyrinth.name) &&
+                Objects.equals(routeColor, labyrinth.routeColor) &&
+                Objects.equals(wallColor, labyrinth.wallColor) &&
+                Objects.equals(x, labyrinth.x) &&
+                Objects.equals(y, labyrinth.y) &&
+                Objects.equals(map, labyrinth.map) &&
+                Objects.equals(robot, labyrinth.robot);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), name, routeColor, wallColor, x, y, map, robot);
     }
 }

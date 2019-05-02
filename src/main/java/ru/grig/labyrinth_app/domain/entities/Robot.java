@@ -1,6 +1,7 @@
 package ru.grig.labyrinth_app.domain.entities;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "robot")
@@ -19,7 +20,7 @@ public class Robot extends AbstractEntity {
     private Integer y;
 
     @ManyToOne
-    @JoinColumn(name = "column_id", referencedColumnName = "id")
+    @JoinColumn(name = "labyrinth_id", referencedColumnName = "id")
     private Labyrinth labyrinth;
 
     public String getName() {
@@ -52,5 +53,42 @@ public class Robot extends AbstractEntity {
 
     public void setY(Integer y) {
         this.y = y;
+    }
+
+    public Labyrinth getLabyrinth() {
+        return labyrinth;
+    }
+
+    public void setLabyrinth(Labyrinth labyrinth) {
+        this.labyrinth = labyrinth;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Robot)) return false;
+        if (!super.equals(o)) return false;
+        Robot robot = (Robot) o;
+        return Objects.equals(name, robot.name) &&
+                Objects.equals(color, robot.color) &&
+                Objects.equals(x, robot.x) &&
+                Objects.equals(y, robot.y) &&
+                Objects.equals(labyrinth, robot.labyrinth);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), name, color, x, y, labyrinth);
+    }
+
+    @Override
+    public String toString() {
+        return "Robot{" +
+                "name='" + name + '\'' +
+                ", color='" + color + '\'' +
+                ", x=" + x +
+                ", y=" + y +
+                ", labyrinth=" + labyrinth +
+                '}';
     }
 }

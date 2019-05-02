@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 
 @Service
 @EnableScheduling
-public class StompMessageService {
+public class MessageService {
 
     private final SimpMessageSendingOperations messageTemplate;
 
     @Autowired
-    public StompMessageService(SimpMessageSendingOperations messageTemplate) {
+    public MessageService(SimpMessageSendingOperations messageTemplate) {
         this.messageTemplate = messageTemplate;
     }
 

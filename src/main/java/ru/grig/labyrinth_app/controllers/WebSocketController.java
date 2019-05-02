@@ -16,7 +16,7 @@ public class WebSocketController {
     @SendTo("/topic/robotState")
     public ResponseEntity<?> handler(RobotState robotState) {
         System.out.println(robotState);
-        return ResponseEntity.ok(new RobotState(value++,value));
+        return ResponseEntity.ok().build();
     }
 
     @SendTo("/topic/robotState")

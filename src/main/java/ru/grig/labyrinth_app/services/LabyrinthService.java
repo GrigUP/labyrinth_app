@@ -36,7 +36,20 @@ public class LabyrinthService {
         labyrinthRepository.delete(labyrinth);
     }
 
-    public Labyrinth update(Labyrinth labyrinth) {
-        return labyrinthRepository.save(labyrinth);
+    public Labyrinth update(Labyrinth labyrinth) throws Exception {
+        Optional<Labyrinth> labyrinthOptional = labyrinthRepository.findById(labyrinth.getId());
+        if (labyrinthOptional.isPresent()) {
+            Labyrinth updatedLabyrinth = labyrinthOptional.get();
+            updatedLabyrinth.setName(labyrinth.getName());
+            updatedLabyrinth.setX(labyrinth.getX());
+            updatedLabyrinth.setY(labyrinth.getY());
+            updatedLabyrinth.setRouteColor(labyrinth.getRouteColor());
+            updatedLabyrinth.setWallColor(labyrinth.getWallColor());
+            updatedLabyrinth.setMap(labyrinth.getMap());
+            updatedLabyrinth.setRobot(labyrinth.getRobot());
+
+            labyrinthRepository.save(updatedLabyrinth);
+        }
+        throw new Exception("Labyrinth not exist");
     }
 }
