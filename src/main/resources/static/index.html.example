@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" http-equiv="Content-Type" content="text/html">
+    <title>Labyrinth Application</title>
+</head>
+<body>
+
+<main>
+    <section>
+        <form action="#" th:action="@{/settings}" th:object="${robotEntity}" method="post">
+            <div>
+                <div>
+                    <label for="robotEntity-name-field">Робот</label>
+                    <input id="robotEntity-name-field" type="text" th:field="*{name}" placeholder="имя робота..." required>
+                </div>
+                <div>
+                    <label for="robotEntity-direction-field">Начальное направление</label>
+                    <select id="robotEntity-direction-field" name="robotEntity-direction">
+                        <option velue="LEFT" selected>влево</option>
+                        <option velue="RIGHT">вправо</option>
+                        <option velue="FORWARD">вверх</option>
+                        <option velue="BACKWARD">вниз</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="rotation-field">Поворот</label>
+                    <select id="rotation-field" name="robotEntity-rotation">
+                        <option velue="LEFT" selected>влево</option>
+                        <option velue="RIGHT">вправо</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="start-x-field">x начала</label>
+                    <input id="start-x-field" type="number" name="start-x" value="0" required>
+
+                    <label for="start-y-field">y начала</label>
+                    <input id="start-y-field" type="number" name="start-y" value="0" required>
+                </div>
+                    <label for="finish-x-field">x финиша</label>
+                    <input id="finish-x-field" type="number" name="finish-x" value="0" required>
+
+                    <label for="finish-y-field">y финиша</label>
+                    <input id="finish-y-field" type="number" name="finish-y" value="0" required>
+                <div>
+
+                </div>
+            </div>
+
+            <div>
+                <div>
+                    <label for="robotEntity-color-field">Цвет робота</label>
+                    <input id="robotEntity-color-field" type="color" value="#ff0000">
+                </div>
+                <div>
+                    <label for="wall-color-field">Цвет стенки</label>
+                    <input id="wall-color-field" type="color" value="#000000">
+                </div>
+                <div>
+                    <label for="route-color-field">Цвет дороги</label>
+                    <input id="route-color-field" type="color" value="#bababa">
+                </div>
+            </div>
+
+            <label for="file-field">Файл карты</label>
+            <input id="file-field" type="file" name="map-file" required>
+
+            <input type="submit">
+        </form>
+
+    </section>
+</main>
+
+</body>
+</html>
